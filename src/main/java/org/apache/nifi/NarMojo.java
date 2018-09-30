@@ -807,7 +807,7 @@ public class NarMojo extends AbstractMojo {
     }
 
 
-    private void copyDependencies() throws MojoExecutionException {
+    protected void copyDependencies() throws MojoExecutionException {
         DependencyStatusSets dss = getDependencySets(this.failOnMissingClassifierArtifact);
         Set artifacts = dss.getResolvedDependencies();
 
@@ -949,11 +949,11 @@ public class NarMojo extends AbstractMojo {
         return new File(outputDirectory, "classes");
     }
 
-    private File getDependenciesDirectory() {
+    protected File getDependenciesDirectory() {
         return new File(getClassesDirectory(), "META-INF/bundled-dependencies");
     }
 
-    private void makeNar() throws MojoExecutionException {
+    protected void makeNar() throws MojoExecutionException {
         File narFile = createArchive();
 
         if (classifier != null) {
